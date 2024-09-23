@@ -8,8 +8,8 @@ function detectCollision() {
             player.x + player.width > enemy.x &&
             player.y < enemy.y + enemy.height &&
             player.height + player.y > enemy.y) {
-            explosionShown = true; // Usar la variable renombrada
-            explosionSound.play(); // Reproducir el sonido de la explosión
+            explosionShown = true; 
+            explosionSound.play(); 
             setTimeout(() => {
                 document.location.reload();
             }, 1000);
@@ -18,7 +18,7 @@ function detectCollision() {
 }
 
 function drawExplosion() {
-    if (explosionShown) { // Usar la variable renombrada
+    if (explosionShown) { 
         ctx.drawImage(explosionImage, playerCar.x, playerCar.y, playerCar.width, playerCar.height);
     }
 }

@@ -67,5 +67,5 @@ function iniciarJuego() {
     setInterval(gameLoop, 1000 / 60); // 60 FPS
 }
 
-// Llama a iniciarJuego para comenzar
+
 iniciarJuego();

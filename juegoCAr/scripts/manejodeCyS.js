@@ -11,8 +11,8 @@ let scoreCounter = 0;
 const scoreElement = document.getElementById('score');
 const scoreboard = document.getElementById('scoreboard');
 
-let isPaused = false; // Variable para el estado de pausa
-let animationId; // Variable para almacenar el ID de la animación
+let isPaused = false;
+let animationId;
 
 canvas.style.display = 'none';
 scoreboard.style.display = 'none';
@@ -24,7 +24,7 @@ startButton.addEventListener('click', () => {
     menu.style.display = 'none';
     canvas.style.display = 'block';
     scoreboard.style.display = 'block';
-    generateEnemies(); // Llama para generar enemigos al iniciar el juego
+    generateEnemies();
     iniciarJuego();
 });
 
@@ -59,7 +59,7 @@ function iniciarJuego() {
     if (!isPaused) {
         movePlayer();
         drawPlayer();
-        drawExplosion(); // Dibuja la explosión si es necesario
+        drawExplosion();
         moveEnemies();
         drawEnemies();
         detectCollision();
@@ -73,7 +73,6 @@ function iniciarJuego() {
     }
 }
 
-// Funciones para mostrar/ocultar la ventana modal de pausa
 function showPauseModal() {
     isPaused = true;
     document.getElementById('pauseModal').style.display = 'block';
@@ -86,7 +85,6 @@ function hidePauseModal() {
     iniciarJuego();
 }
 
-// Eventos de teclado
 window.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') {
         if (!isPaused) {
@@ -95,10 +93,8 @@ window.addEventListener('keydown', (event) => {
     }
 });
 
-// Evento para el botón de continuar en la ventana modal de pausa
 document.getElementById('continueButton').addEventListener('click', hidePauseModal);
 
-// Generación y manejo de enemigos
 const enemyCarImage = new Image();
 enemyCarImage.src = '/Concurrente-7b-223732-main/juegoCAr/imagenes/carroE.png';
 
@@ -106,8 +102,8 @@ const positions = [100, 250, 400, 550];
 let enemies = [];
 
 function generateEnemies() {
-    const enemyCount = 6; // Número de enemigos
-    enemies = []; // Reiniciar el array de enemigos
+    const enemyCount = 6;
+    enemies = [];
     for (let i = 0; i < enemyCount; i++) {
         const positionIndex = Math.floor(Math.random() * positions.length);
         const enemy = {
@@ -121,7 +117,6 @@ function generateEnemies() {
     }
 }
 
-// Generar enemigos continuamente
 setInterval(generateEnemies, 2000);
 
 function drawEnemies() {
@@ -134,14 +129,12 @@ function moveEnemies(playerX) {
     for (let enemy of enemies) {
         enemy.y += enemy.speed;
 
-        // Hacer que el enemigo intente seguir al jugador
         if (enemy.x < playerX) {
             enemy.x += 1;
         } else if (enemy.x > playerX) {
             enemy.x -= 1;
         }
 
-        // Si el enemigo sale de la pantalla, vuelve a aparecer en la parte superior
         if (enemy.y > canvas.height) {
             enemy.y = -100 - Math.random() * 400;
             const positionIndex = Math.floor(Math.random() * positions.length);
@@ -154,10 +147,9 @@ function getEnemies() {
     return enemies;
 }
 
-// Explosion
 const explosionImage = new Image();
-explosionImage.src = '/Concurrente-7b-223732-main/juegoCAr/imagenes/explo.gif'; // Ruta del GIF de explosión
-let explosionVisible = false; // Controla si la explosión debe mostrarse
+explosionImage.src = '/Concurrente-7b-223732-main/juegoCAr/imagenes/explo.gif';
+let explosionVisible = false;
 
 function detectCollision() {
     const player = getPlayerPosition();
@@ -168,11 +160,10 @@ function detectCollision() {
             player.x + player.width > enemy.x &&
             player.y < enemy.y + enemy.height &&
             player.height + player.y > enemy.y) {
-            // Colisión detectada
-            explosionVisible = true; // Muestra la explosión
+            explosionVisible = true;
             setTimeout(() => {
-                document.location.reload(); // Recarga después de un tiempo
-            }, 1000); // Espera 1 segundo para mostrar la explosión
+                document.location.reload();
+            }, 1000);
         }
     }
 }
@@ -183,7 +174,6 @@ function drawExplosion() {
     }
 }
 
-// Asegúrate de que estas funciones existan y se llamen correctamente
 function getPlayerPosition() {
     return { x: playerCar.x, y: playerCar.y, width: playerCar.width, height: playerCar.height };
 }
@@ -191,4 +181,3 @@ function getPlayerPosition() {
 function drawPlayer() {
     ctx.drawImage(playerCarImage, playerCar.x, playerCar.y, playerCar.width, playerCar.height);
 }
-
