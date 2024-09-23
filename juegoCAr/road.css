@@ -1,0 +1,139 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Press Start 2P', cursive;
+}
+
+#menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/Concurrente-7b-223732-main/Fmenu.png');
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+    animation: fadeIn 1s ease; /* Añade una animación de entrada */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+#menu h1 {
+    font-size: 3.5rem; /* Aumenta el tamaño del texto */
+    color: #00FF00;
+    text-shadow: 3px 3px 0 #000, 6px 6px 0 #FF00FF; /* Sombra más pronunciada */
+    margin-bottom: 60px; /* Espacio entre el título y botones */
+}
+
+#startButton, #howToPlayButton {
+    padding: 15px 30px;
+    font-size: 1.5rem; /* Aumenta el tamaño de fuente */
+    background-color: #FF00FF;
+    color: #FFFFFF;
+    border: 3px solid #00FF00;
+    border-radius: 12px; /* Bordes más redondeados */
+    cursor: pointer;
+    text-shadow: 2px 2px 0 #000;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5); /* Sombra más profunda */
+    transition: all 0.3s ease;
+    margin: 15px; /* Espacio entre botones */
+    font-family: 'Press Start 2P', cursive; /* Fuente retro */
+}
+
+#startButton:hover, #howToPlayButton:hover {
+    background-color: #00FF00;
+    color: #000;
+    border-color: #FF00FF;
+    box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.5); /* Sombra más intensa al pasar el mouse */
+}
+
+#scoreboard {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: rgba(0, 0, 0, 0.6); /* Fondo semitransparente */
+    color: white;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 18px;
+    padding: 15px;
+    border-radius: 10px;
+    z-index: 1000;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Fondo más oscuro */
+}
+
+.modal-content {
+    background-color: #222; /* Fondo más oscuro para la modal */
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 80%;
+    max-width: 400px;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.8); /* Sombra verde neón */
+}
+
+button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #00FF00; /* Cambia el color al pasar el mouse */
+    cursor: pointer;
+}
+
+.animation-container {
+    margin-top: 20px;
+    position: relative;
+    width: 40%;
+    height: 150px;
+    overflow: hidden;
+    margin-left: 100px;
+    background-color: #222;
+}
+
+#animatedCar {
+    position: absolute;
+    top: 50px;
+    width: 50px;
+    height: 100px;
+    animation: moveCar 2s infinite linear;
+}
+
+@keyframes moveCar {
+    0% {
+        left: 0;
+    }
+    50% {
+        left: calc(100% - 50px);
+    }
+    100% {
+        left: 0;
+    }
+}
